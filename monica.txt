@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 Hola este es mi aporte a la main, soy nonica
+=======
+Hola soy monica este es mi commit, muchas gracias
+>>>>>>> 0fe0eeacbf63f1a0a8d3f333cbf2a2e86a4ec073
