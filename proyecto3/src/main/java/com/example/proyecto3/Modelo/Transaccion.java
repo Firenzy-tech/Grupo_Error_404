@@ -38,8 +38,7 @@ public class Transaccion {
         this.id = id;
         this.concept = concept;
         this.amount = amount;
-        this.createdAt = createdAt;
-        this.updateAt = updateAt;
+        
     }
 
     public Long getId() {
