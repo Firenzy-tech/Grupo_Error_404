@@ -1,13 +1,11 @@
 package com.example.proyecto3.Modelo;
 
 import java.sql.Date;
-import java.util.List;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Transaccion")
-
 
 public class Transaccion {
 
@@ -22,29 +20,30 @@ public class Transaccion {
     @Column(name = "amount", length = 300)
     private float amount;
 
-    @Column(name = "users")
-    private List<Empleado> user;
+    @OneToMany
+    @JoinColumn(name = "users", referencedColumnName = "id")
+    private Empleado empleado;
 
-    @Column(name = "enterprice", length = 50)
+    @ManyToOne
+    @JoinColumn(name = "IdEnterprice", referencedColumnName = "id")
     private Empresa enterprice;
-    
+
     @Column(name = "createdAt")
     private Date createdAt;
 
     @Column(name = "updatedAt")
     private Date updateAt;
 
-
-    public Transaccion(long id, String concept, float amount, List<Empleado> user, Empresa enterprice, Date createdAt, Date updateAt) {
+    public Transaccion(long id, String concept, float amount, Empleado empleado, Empresa enterprice, Date createdAt,
+            Date updateAt) {
         this.id = id;
         this.concept = concept;
         this.amount = amount;
-        this.user = user;
+        this.empleado = empleado;
         this.enterprice = enterprice;
         this.createdAt = createdAt;
         this.updateAt = updateAt;
     }
-
 
     public long getId() {
         return this.id;
@@ -70,12 +69,12 @@ public class Transaccion {
         this.amount = amount;
     }
 
-    public List<Empleado> getUser() {
-        return this.user;
+    public Empleado getEmpleado() {
+        return this.empleado;
     }
 
-    public void setUser(List<Empleado> user) {
-        this.user = user;
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
     }
 
     public Empresa getEnterprice() {
@@ -102,8 +101,4 @@ public class Transaccion {
         this.updateAt = updateAt;
     }
 
-
-
-
-    
 }
