@@ -27,8 +27,9 @@ public class Empresa {
     @Column(name = "address", length = 50)
     private String address;
 
-    @Column(name = "users")
-    private List<Empleado> user;
+    @OneToMany
+    @JoinColumn(name = "IdUsers", referencedColumnName = "id")
+    private Empleado empleado;
 
     @Column(name = "transactions")
     private List<Transaccion> transactions;
@@ -43,14 +44,14 @@ public class Empresa {
 
     }
 
-    public Empresa(Long id, String name, String document, String phone, String address, List<Empleado> users,
+    public Empresa(Long id, String name, String document, String phone, String address, Empleado empleado,
             List<Transaccion> transactions, Date createdAt, Date updateAt) {
         this.id = id;
         this.name = name;
         this.document = document;
         this.phone = phone;
         this.address = address;
-        this.user = users;
+        this.empleado = empleado;
         this.transactions = transactions;
         this.createdAt = createdAt;
         this.updateAt = updateAt;
@@ -65,7 +66,7 @@ public class Empresa {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -73,7 +74,7 @@ public class Empresa {
     }
 
     public String getDocument() {
-        return document;
+        return this.document;
     }
 
     public void setDocument(String document) {
@@ -81,7 +82,7 @@ public class Empresa {
     }
 
     public String getPhone() {
-        return phone;
+        return this.phone;
     }
 
     public void setPhone(String phone) {
@@ -89,39 +90,39 @@ public class Empresa {
     }
 
     public String getAddress() {
-        return address;
+        return this.address;
     }
 
     public void setAddress(String address) {
         this.address = address;
     }
 
-    public List<Empleado> getUser() {
-        return user;
+    public Empleado getEmpleado() {
+        return this.empleado;
     }
 
-    public void setUser(List<Empleado> user) {
-        this.user = user;
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
     }
 
-    public List<Transaccion> gTransaccions() {
-        return transactions;
+    public List<Transaccion> getTransactions() {
+        return this.transactions;
     }
 
-    public void setTransactions(List<Transaccion> transaccions) {
-        this.transactions = transaccions;
+    public void setTransactions(List<Transaccion> transactions) {
+        this.transactions = transactions;
     }
 
-    public Date getCreateAt() {
-        return createdAt;
+    public Date getCreatedAt() {
+        return this.createdAt;
     }
 
-    public void setCreateAt(Date createAt) {
-        this.createdAt = createAt;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public Date getUpdateAt() {
-        return updateAt;
+        return this.updateAt;
     }
 
     public void setUpdateAt(Date updateAt) {

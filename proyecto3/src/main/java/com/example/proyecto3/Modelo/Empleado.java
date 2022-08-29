@@ -1,7 +1,6 @@
 package com.example.proyecto3.Modelo;
 
 import java.sql.Date;
-import java.util.List;
 
 import javax.persistence.*;
 
@@ -9,6 +8,7 @@ import javax.persistence.*;
 @Table(name = "empleado")
 
 public class Empleado {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -26,8 +26,9 @@ public class Empleado {
     @Column(name = "enterprice", length = 50)
     private Empresa enterprice;
 
-    @Column(name = "transactions")
-    private List<Transaccion> transactions;
+    @ManyToOne
+    @JoinColumn(name = "IdTransactions", columnDefinition = "id")
+    private Transaccion transactions;
 
     @Column(name = "createdAt")
     private Date createdAt;
@@ -35,8 +36,8 @@ public class Empleado {
     @Column(name = "updatedAt")
     private Date updateAt;
 
-
-    public Empleado(Long id, String email, Profile profile, Enum_roleName role, Empresa enterprice, List<Transaccion> transactions, Date createdAt, Date updateAt) {
+    public Empleado(Long id, String email, Profile profile, Enum_roleName role, Empresa enterprice,
+            Transaccion transactions, Date createdAt, Date updateAt) {
         this.id = id;
         this.email = email;
         this.profile = profile;
@@ -46,7 +47,6 @@ public class Empleado {
         this.createdAt = createdAt;
         this.updateAt = updateAt;
     }
-
 
     public Long getId() {
         return this.id;
@@ -88,11 +88,11 @@ public class Empleado {
         this.enterprice = enterprice;
     }
 
-    public List<Transaccion> getTransactions() {
+    public Transaccion getTransactions() {
         return this.transactions;
     }
 
-    public void setTransactions(List<Transaccion> transactions) {
+    public void setTransactions(Transaccion transactions) {
         this.transactions = transactions;
     }
 
@@ -112,6 +112,4 @@ public class Empleado {
         this.updateAt = updateAt;
     }
 
-      
-    
 }
