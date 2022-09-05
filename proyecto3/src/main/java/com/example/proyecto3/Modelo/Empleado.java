@@ -1,5 +1,7 @@
 package com.example.proyecto3.Modelo;
 
+
+
 import java.sql.Date;
 
 import javax.persistence.*;
@@ -7,18 +9,11 @@ import javax.persistence.*;
 @Entity
 @Table(name = "empleado")
 
-public class Empleado {
+@PrimaryKeyJoinColumn(referencedColumnName = "nombre")
+public class Empleado extends Profile {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-
-    @Column(name = "email", length = 100, unique = true)
-    private String email;
-
-    @Column(name = "profile", length = 50)
-    private Profile profile;
+    @Column(name = "nombre", length = 100)
+    private String nombre;
 
     @Column(name = "role", length = 50)
     private Enum_roleName role;
@@ -30,46 +25,24 @@ public class Empleado {
     @JoinColumn(name = "IdTransactions", columnDefinition = "id")
     private Transaccion transactions;
 
-    @Column(name = "createdAt")
-    private Date createdAt;
 
-    @Column(name = "updatedAt")
-    private Date updateAt;
 
-    public Empleado(Long id, String email, Profile profile, Enum_roleName role, Empresa enterprice,
-            Transaccion transactions, Date createdAt, Date updateAt) {
-        this.id = id;
-        this.email = email;
-        this.profile = profile;
+    public Empleado(Long id, String documento, String telefono, String movil, String direccion, String correo,
+            Date createdAt, Date updateAt, Empresa enterprice, String nombre, Enum_roleName role, Empresa enterprice2,
+            Transaccion transactions) {
+        super(id, documento, telefono, movil, direccion, correo, createdAt, updateAt, enterprice);
+        this.nombre = nombre;
         this.role = role;
-        this.enterprice = enterprice;
+        enterprice = enterprice2;
         this.transactions = transactions;
-        this.createdAt = createdAt;
-        this.updateAt = updateAt;
     }
 
-    public Long getId() {
-        return this.id;
+    public String getNombre() {
+        return this.nombre;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getEmail() {
-        return this.email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Profile getProfile() {
-        return this.profile;
-    }
-
-    public void setProfile(Profile profile) {
-        this.profile = profile;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public Enum_roleName getRole() {
@@ -95,21 +68,6 @@ public class Empleado {
     public void setTransactions(Transaccion transactions) {
         this.transactions = transactions;
     }
-
-    public Date getCreatedAt() {
-        return this.createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdateAt() {
-        return this.updateAt;
-    }
-
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
-    }
-
+ 
+   
 }

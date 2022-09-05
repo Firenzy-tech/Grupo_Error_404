@@ -11,9 +11,10 @@ public class Mascota {
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "id_Client", referencedColumnName = "id")
-    private Usuario usuario;
 
+    @Column(name = "Usuario", length = 50)
+    private Usuario usuario;
+    
     @Column(name = "nombre", length = 100, unique = true)
     private String nombre;
 

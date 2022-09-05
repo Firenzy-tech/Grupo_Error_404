@@ -7,7 +7,8 @@ public class Enum_roleName {
         ADMON,
         VENTAS,
         VETERINARIO,
-        PELUQUERO
+        PELUQUERO,
+        CLIENTE
 
     }
     
