@@ -12,9 +12,8 @@ import com.example.proyecto3.Modelo.Empresa;
 @Repository
 public interface EmpresaRepositorio extends JpaRepository<Empresa, Long> {
     
-    @Modifying
+    /*@Modifying
     @Transactional
-    @Query(value = "DELETE FROM EMPRESA e WHERE e.id = ?1")
-    Empresa deleteEmpresa(Long id);
-}
+    @Query  */
 
+}
