@@ -42,8 +42,10 @@ public class EmpresaControlador {
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-    public Empresa eliminarEmpresa(@PathVariable Long id) {
-        return repositorioEmpresa.deleteEmpresa(id);
+    public void eliminarEmpresa(@PathVariable Long id) {
+       repositorioEmpresa.deleteById(id);
 
     }
+    
+
 }
