@@ -27,7 +27,7 @@ public class Empleado {
     private Empresa enterprice;
 
     @Column(name = "transactions")
-    private List<Transaccion> transactions;
+    private Transaccion transactions;
 
     @Column(name = "createdAt")
     private Date createdAt;
@@ -36,7 +36,7 @@ public class Empleado {
     private Date updateAt;
 
 
-    public Empleado(Long id, String email, Profile profile, Enum_roleName role, Empresa enterprice, List<Transaccion> transactions, Date createdAt, Date updateAt) {
+    public Empleado(Long id, String email, Profile profile, Enum_roleName role, Empresa enterprice, Transaccion transactions, Date createdAt, Date updateAt) {
         this.id = id;
         this.email = email;
         this.profile = profile;
@@ -88,11 +88,11 @@ public class Empleado {
         this.enterprice = enterprice;
     }
 
-    public List<Transaccion> getTransactions() {
+    public Transaccion getTransactions() {
         return this.transactions;
     }
 
-    public void setTransactions(List<Transaccion> transactions) {
+    public void setTransactions(Transaccion transactions) {
         this.transactions = transactions;
     }
 
