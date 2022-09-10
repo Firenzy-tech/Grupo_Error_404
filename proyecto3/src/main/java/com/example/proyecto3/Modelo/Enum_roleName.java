@@ -1,4 +1,4 @@
-package com.example.proyecto3.Modelo;
+package com.example.proyecto3.modelo;
 
 public class Enum_roleName {
 

@@ -1,51 +1,52 @@
-package com.example.proyecto3.Modelo;
+package com.example.proyecto3.modelo;
 
-
-import java.sql.Date;
-import java.util.List;
+import java.util.Date;
 
 import javax.persistence.*;
 
+
 @Entity
-@Table(name = "transaccion")
+@Table(name = "Transaccion")
+
 
 public class Transaccion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    private long id;
 
-    @Column(name = "concept")
     private String concept;
-
-    @Column(name = "amount")
     private float amount;
 
-    /*@Column(name = "user")
-    private User user;
+    @ManyToOne
+    @JoinColumn(name="idEmpleado")
+    private Empleado empleado;
 
-    @Column(name = "enterprise")
-    private Enterprise enterprise;*/
+    @ManyToOne
+    @JoinColumn(name = "idEmpresa")
+    private Empresa empresa;
 
-    @Column(name = "createdAt")
     private Date createdAt;
-
-    @Column(name = "updatedAt")
     private Date updateAt;
 
-    public Transaccion(Long id, String concept, float amount) {
+    public Transaccion(){}
+
+    public Transaccion(long id, String concept, float amount, Empleado empleado, Empresa empresa, Date createdAt,
+            Date updateAt) {
         this.id = id;
         this.concept = concept;
         this.amount = amount;
-        
+        this.empleado = empleado;
+        this.empresa = empresa;
+        this.createdAt = createdAt;
+        this.updateAt = updateAt;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -63,6 +64,22 @@ public class Transaccion {
 
     public void setAmount(float amount) {
         this.amount = amount;
+    }
+
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
 
     public Date getCreatedAt() {
@@ -83,7 +100,5 @@ public class Transaccion {
 
     
     
-
-
-
+    
 }

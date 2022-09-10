@@ -1,131 +1,117 @@
-package com.example.proyecto3.Modelo;
+package com.example.proyecto3.modelo;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "empresa")
-
+@Table (name = "empresa")
 public class Empresa {
-
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Column(name = "name", length = 100, unique = true)
-    private String name;
+    @Column(unique=true)
+    private String nombre;
 
-    @Column(name = "document", length = 20, unique = true)
-    private String document;
+    @Column(unique=true)
+    private String identificacion;
 
-    @Column(name = "phone", length = 30)
-    private String phone;
+    private String telefono;
+    private String correo;
+    
+    @OneToMany(mappedBy = "empresa")
+    private List<Empleado> empleado;
 
-    @Column(name = "address", length = 50)
-    private String address;
+    @OneToMany(mappedBy = "empresa")
+    private List<Transaccion> transaccion;
+	
+	private Date updateAt;
+	private Date createdAt;
 
-    @Column(name = "users")
-    private List<Empleado> user;
+    public Empresa(){}
 
-    @Column(name = "transactions")
-    private List<Transaccion> transactions;
-
-    @Column(name = "createdAt")
-    private Date createdAt;
-
-    @Column(name = "updatedAt")
-    private Date updateAt;
-
-    public Empresa() {
-
-    }
-
-    public Empresa(Long id, String name, String document, String phone, String address, List<Empleado> users,
-            List<Transaccion> transactions, Date createdAt, Date updateAt) {
-        this.id = id;
-        this.name = name;
-        this.document = document;
-        this.phone = phone;
-        this.address = address;
-        this.user = users;
-        this.transactions = transactions;
-        this.createdAt = createdAt;
+    
+    public Empresa(String nombre, String identificacion, String telefono, String correo, List<Empleado> empleado,
+            List<Transaccion> transaccion, Date updateAt, Date createdAt) {
+        this.nombre = nombre;
+        this.identificacion = identificacion;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.empleado = empleado;
+        this.transaccion = transaccion;
         this.updateAt = updateAt;
+        this.createdAt = createdAt;
     }
+
+
+    public List<Empleado> getEmpleado() {
+        return empleado;
+    }
+
+
+    public void setEmpleado(List<Empleado> empleado) {
+        this.empleado = empleado;
+    }
+
+
+    public List<Transaccion> getTransaccion() {
+        return transaccion;
+    }
+
+
+    public void setTransaccion(List<Transaccion> transaccion) {
+        this.transaccion = transaccion;
+    }
+
 
     public Long getId() {
-        return this.id;
+        return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
-
-    public String getName() {
-        return name;
+    public String getNombre() {
+        return nombre;
     }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
-
-    public String getDocument() {
-        return document;
+    public String getIdentificacion() {
+        return identificacion;
     }
-
-    public void setDocument(String document) {
-        this.document = document;
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
     }
-
-    public String getPhone() {
-        return phone;
+    public String getTelefono() {
+        return telefono;
     }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
-
-    public String getAddress() {
-        return address;
+    public String getCorreo() {
+        return correo;
     }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
-
-    public List<Empleado> getUser() {
-        return user;
-    }
-
-    public void setUser(List<Empleado> user) {
-        this.user = user;
-    }
-
-    public List<Transaccion> gTransaccions() {
-        return transactions;
-    }
-
-    public void setTransactions(List<Transaccion> transaccions) {
-        this.transactions = transaccions;
-    }
-
-    public Date getCreateAt() {
-        return createdAt;
-    }
-
-    public void setCreateAt(Date createAt) {
-        this.createdAt = createAt;
-    }
-
+   
     public Date getUpdateAt() {
         return updateAt;
     }
-
     public void setUpdateAt(Date updateAt) {
         this.updateAt = updateAt;
     }
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+
+    
 
 }
