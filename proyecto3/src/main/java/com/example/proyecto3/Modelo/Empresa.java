@@ -28,10 +28,10 @@ public class Empresa {
     private String address;
 
     @Column(name = "users")
-    private List<Empleado> user;
+    private Empleado user;
 
     @Column(name = "transactions")
-    private List<Transaccion> transactions;
+    private Transaccion transactions;
 
     @Column(name = "createdAt")
     private Date createdAt;
