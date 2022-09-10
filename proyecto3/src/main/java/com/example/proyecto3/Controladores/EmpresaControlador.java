@@ -36,7 +36,7 @@ public class EmpresaControlador {
         return repositorioEmpresa.save(empresa);
     }
 
-    @RequestMapping(value = "/modify/{id}", method = RequestMethod.PATCH)
+    @RequestMapping(value = "/modify", method = RequestMethod.PATCH)
     public Empresa patch(@RequestBody Empresa empresa, @PathVariable Long id) {
         return repositorioEmpresa.save(empresa);
     }
@@ -46,4 +46,6 @@ public class EmpresaControlador {
         return repositorioEmpresa.deleteEmpresa(id);
 
     }
+    
+
 }
