@@ -1,17 +1,9 @@
 package com.example.proyecto3.Modelo;
 
-
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.*;
-
-import org.hibernate.annotations.GenericGenerator;
-=======
-import java.util.Date;
-
-import javax.persistence.*;
-
-
 
 @Entity
 @Table(name = "Transaccion")
@@ -20,8 +12,7 @@ import javax.persistence.*;
 public class Transaccion {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_transaccion")
-    @GenericGenerator(name = "secuencia_transaccion", strategy = "increment")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
 
@@ -31,66 +22,32 @@ public class Transaccion {
     @Column(name = "amount", length = 300)
     private float amount;
 
-    @ManyToOne
-    @JoinColumn(name = "idempresa", referencedColumnName = "id")
+    @Column(name = "users")
+    private List<Empleado> user;
+
+    @Column(name = "enterprice", length = 50)
     private Empresa enterprice;
-
-    @ManyToOne
-    @JoinColumn(name = "idempleado", referencedColumnName = "id")
-    private Empleado usuario;
-
+    
     @Column(name = "createdAt")
     private Date createdAt;
 
     @Column(name = "updatedAt")
     private Date updateAt;
 
-    public Transaccion(long id, String concept, float amount, Empresa enterprice, Empleado usuario, Date createdAt,
-=======
 
-public class Transaccion {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    private String concept;
-    private float amount;
-
-    @ManyToOne
-    @JoinColumn(name="idEmpleado")
-    private Empleado empleado;
-
-    @ManyToOne
-    @JoinColumn(name = "idEmpresa")
-    private Empresa empresa;
-
-    private Date createdAt;
-    private Date updateAt;
-
-    public Transaccion(){}
-
-    public Transaccion(long id, String concept, float amount, Empleado empleado, Empresa empresa, Date createdAt,
-
-            Date updateAt) {
+    public Transaccion(long id, String concept, float amount, List<Empleado> user, Empresa enterprice, Date createdAt, Date updateAt) {
         this.id = id;
         this.concept = concept;
         this.amount = amount;
+        this.user = user;
         this.enterprice = enterprice;
-        this.usuario = usuario;
-=======
-        this.empleado = empleado;
-        this.empresa = empresa;
         this.createdAt = createdAt;
         this.updateAt = updateAt;
     }
 
+
     public long getId() {
-
         return this.id;
-=======
-        return id;
-
     }
 
     public void setId(long id) {
@@ -98,11 +55,7 @@ public class Transaccion {
     }
 
     public String getConcept() {
-
         return this.concept;
-=======
-        return concept;
-
     }
 
     public void setConcept(String concept) {
@@ -110,17 +63,20 @@ public class Transaccion {
     }
 
     public float getAmount() {
-
         return this.amount;
-=======
-        return amount;
-
     }
 
     public void setAmount(float amount) {
         this.amount = amount;
     }
 
+    public List<Empleado> getUser() {
+        return this.user;
+    }
+
+    public void setUser(List<Empleado> user) {
+        this.user = user;
+    }
 
     public Empresa getEnterprice() {
         return this.enterprice;
@@ -130,36 +86,8 @@ public class Transaccion {
         this.enterprice = enterprice;
     }
 
-    public Empleado getUsuario() {
-        return this.usuario;
-    }
-
-    public void setUsuario(Empleado usuario) {
-        this.usuario = usuario;
-    }
-
     public Date getCreatedAt() {
         return this.createdAt;
-=======
-    public Empleado getEmpleado() {
-        return empleado;
-    }
-
-    public void setEmpleado(Empleado empleado) {
-        this.empleado = empleado;
-    }
-
-    public Empresa getEmpresa() {
-        return empresa;
-    }
-
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-
     }
 
     public void setCreatedAt(Date createdAt) {
@@ -167,11 +95,7 @@ public class Transaccion {
     }
 
     public Date getUpdateAt() {
-
         return this.updateAt;
-=======
-        return updateAt;
-
     }
 
     public void setUpdateAt(Date updateAt) {
@@ -179,7 +103,7 @@ public class Transaccion {
     }
 
 
-=======
-    
 
+
+    
 }

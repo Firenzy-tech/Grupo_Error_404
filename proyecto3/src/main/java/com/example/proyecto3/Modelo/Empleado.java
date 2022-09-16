@@ -1,39 +1,22 @@
 package com.example.proyecto3.Modelo;
 
 import java.sql.Date;
-
-
-import javax.persistence.*;
-
-import org.hibernate.annotations.GenericGenerator;
-
-=======
 import java.util.List;
 
 import javax.persistence.*;
-
 
 @Entity
 @Table(name = "empleado")
 
 public class Empleado {
     @Id
-
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_empleado")
-    @GenericGenerator(name = "secuencia_empleado", strategy = "increment")
-=======
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(name = "id")
     private Long id;
 
     @Column(name = "email", length = 100, unique = true)
     private String email;
 
-    @ManyToOne
-    @JoinColumn(name = "idempresa", referencedColumnName = "id")
-    private Empresa empresa;
-=======
     @Column(name = "profile", length = 50)
     private Profile profile;
 
@@ -46,19 +29,12 @@ public class Empleado {
     @Column(name = "transactions")
     private Transaccion transactions;
 
-
     @Column(name = "createdAt")
     private Date createdAt;
 
     @Column(name = "updatedAt")
     private Date updateAt;
 
-    public Empleado(Long id, String email, Empresa enterprice, Date createdAt,
-            Date updateAt) {
-        this.id = id;
-        this.email = email;
-        this.empresa = enterprice;
-=======
 
     public Empleado(Long id, String email, Profile profile, Enum_roleName role, Empresa enterprice, Transaccion transactions, Date createdAt, Date updateAt) {
         this.id = id;
@@ -67,13 +43,9 @@ public class Empleado {
         this.role = role;
         this.enterprice = enterprice;
         this.transactions = transactions;
-
         this.createdAt = createdAt;
         this.updateAt = updateAt;
     }
-
-
-=======
 
 
     public Long getId() {
@@ -92,13 +64,6 @@ public class Empleado {
         this.email = email;
     }
 
-    public Empresa getEnterprice() {
-        return this.empresa;
-    }
-
-    public void setEnterprice(Empresa enterprice) {
-        this.empresa = enterprice;
-=======
     public Profile getProfile() {
         return this.profile;
     }
@@ -129,7 +94,6 @@ public class Empleado {
 
     public void setTransactions(Transaccion transactions) {
         this.transactions = transactions;
-
     }
 
     public Date getCreatedAt() {
@@ -148,9 +112,6 @@ public class Empleado {
         this.updateAt = updateAt;
     }
 
-
-=======
       
     
-
 }
