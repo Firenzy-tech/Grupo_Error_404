@@ -2,17 +2,28 @@ package com.example.proyecto3.Modelo;
 
 import java.sql.Date;
 
+
 import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
+
+=======
+import java.util.List;
+
+import javax.persistence.*;
+
 
 @Entity
 @Table(name = "empleado")
 
 public class Empleado {
     @Id
+
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_empleado")
     @GenericGenerator(name = "secuencia_empleado", strategy = "increment")
+=======
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Column(name = "id")
     private Long id;
 
@@ -22,6 +33,19 @@ public class Empleado {
     @ManyToOne
     @JoinColumn(name = "idempresa", referencedColumnName = "id")
     private Empresa empresa;
+=======
+    @Column(name = "profile", length = 50)
+    private Profile profile;
+
+    @Column(name = "role", length = 50)
+    private Enum_roleName role;
+
+    @Column(name = "enterprice", length = 50)
+    private Empresa enterprice;
+
+    @Column(name = "transactions")
+    private Transaccion transactions;
+
 
     @Column(name = "createdAt")
     private Date createdAt;
@@ -34,9 +58,23 @@ public class Empleado {
         this.id = id;
         this.email = email;
         this.empresa = enterprice;
+=======
+
+    public Empleado(Long id, String email, Profile profile, Enum_roleName role, Empresa enterprice, Transaccion transactions, Date createdAt, Date updateAt) {
+        this.id = id;
+        this.email = email;
+        this.profile = profile;
+        this.role = role;
+        this.enterprice = enterprice;
+        this.transactions = transactions;
+
         this.createdAt = createdAt;
         this.updateAt = updateAt;
     }
+
+
+=======
+
 
     public Long getId() {
         return this.id;
@@ -60,6 +98,38 @@ public class Empleado {
 
     public void setEnterprice(Empresa enterprice) {
         this.empresa = enterprice;
+=======
+    public Profile getProfile() {
+        return this.profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
+
+    public Enum_roleName getRole() {
+        return this.role;
+    }
+
+    public void setRole(Enum_roleName role) {
+        this.role = role;
+    }
+
+    public Empresa getEnterprice() {
+        return this.enterprice;
+    }
+
+    public void setEnterprice(Empresa enterprice) {
+        this.enterprice = enterprice;
+    }
+
+    public Transaccion getTransactions() {
+        return this.transactions;
+    }
+
+    public void setTransactions(Transaccion transactions) {
+        this.transactions = transactions;
+
     }
 
     public Date getCreatedAt() {
@@ -77,5 +147,10 @@ public class Empleado {
     public void setUpdateAt(Date updateAt) {
         this.updateAt = updateAt;
     }
+
+
+=======
+      
+    
 
 }
