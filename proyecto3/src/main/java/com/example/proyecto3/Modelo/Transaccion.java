@@ -1,18 +1,19 @@
 package com.example.proyecto3.Modelo;
 
 import java.sql.Date;
-import java.util.List;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "Transaccion")
 
-
 public class Transaccion {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_transaccion")
+    @GenericGenerator(name = "secuencia_transaccion", strategy = "increment")
     @Column(name = "id")
     private long id;
 
@@ -22,29 +23,24 @@ public class Transaccion {
     @Column(name = "amount", length = 300)
     private float amount;
 
-    @Column(name = "users")
-    private List<Empleado> user;
-
-    @Column(name = "enterprice", length = 50)
+    @ManyToOne
+    @JoinColumn(name = "idempresa", referencedColumnName = "id")
     private Empresa enterprice;
-    
+
     @Column(name = "createdAt")
     private Date createdAt;
 
     @Column(name = "updatedAt")
     private Date updateAt;
 
-
-    public Transaccion(long id, String concept, float amount, List<Empleado> user, Empresa enterprice, Date createdAt, Date updateAt) {
+    public Transaccion(long id, String concept, float amount, Empresa enterprice, Date createdAt, Date updateAt) {
         this.id = id;
         this.concept = concept;
         this.amount = amount;
-        this.user = user;
         this.enterprice = enterprice;
         this.createdAt = createdAt;
         this.updateAt = updateAt;
     }
-
 
     public long getId() {
         return this.id;
@@ -68,14 +64,6 @@ public class Transaccion {
 
     public void setAmount(float amount) {
         this.amount = amount;
-    }
-
-    public List<Empleado> getUser() {
-        return this.user;
-    }
-
-    public void setUser(List<Empleado> user) {
-        this.user = user;
     }
 
     public Empresa getEnterprice() {
@@ -102,8 +90,4 @@ public class Transaccion {
         this.updateAt = updateAt;
     }
 
-
-
-
-    
 }

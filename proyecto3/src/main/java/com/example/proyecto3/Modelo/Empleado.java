@@ -1,33 +1,31 @@
 package com.example.proyecto3.Modelo;
 
 import java.sql.Date;
-import java.util.List;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "empleado")
 
 public class Empleado {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_empleado")
+    @GenericGenerator(name = "secuencia_empleado", strategy = "increment")
     @Column(name = "id")
     private Long id;
 
     @Column(name = "email", length = 100, unique = true)
     private String email;
 
-    @Column(name = "profile", length = 50)
-    private Profile profile;
+    @ManyToOne
+    @JoinColumn(name = "idempresa", referencedColumnName = "id")
+    private Empresa empresa;
 
-    @Column(name = "role", length = 50)
-    private Enum_roleName role;
-
-    @Column(name = "enterprice", length = 50)
-    private Empresa enterprice;
-
-    @Column(name = "transactions")
-    private List<Transaccion> transactions;
+    @ManyToOne
+    @JoinColumn(name = "idtransaccion", referencedColumnName = "id")
+    private Transaccion transaccion;
 
     @Column(name = "createdAt")
     private Date createdAt;
@@ -35,18 +33,15 @@ public class Empleado {
     @Column(name = "updatedAt")
     private Date updateAt;
 
-
-    public Empleado(Long id, String email, Profile profile, Enum_roleName role, Empresa enterprice, List<Transaccion> transactions, Date createdAt, Date updateAt) {
+    public Empleado(Long id, String email, Empresa enterprice, Transaccion transactions, Date createdAt,
+            Date updateAt) {
         this.id = id;
         this.email = email;
-        this.profile = profile;
-        this.role = role;
-        this.enterprice = enterprice;
-        this.transactions = transactions;
+        this.empresa = enterprice;
+        this.transaccion = transactions;
         this.createdAt = createdAt;
         this.updateAt = updateAt;
     }
-
 
     public Long getId() {
         return this.id;
@@ -64,36 +59,20 @@ public class Empleado {
         this.email = email;
     }
 
-    public Profile getProfile() {
-        return this.profile;
-    }
-
-    public void setProfile(Profile profile) {
-        this.profile = profile;
-    }
-
-    public Enum_roleName getRole() {
-        return this.role;
-    }
-
-    public void setRole(Enum_roleName role) {
-        this.role = role;
-    }
-
     public Empresa getEnterprice() {
-        return this.enterprice;
+        return this.empresa;
     }
 
     public void setEnterprice(Empresa enterprice) {
-        this.enterprice = enterprice;
+        this.empresa = enterprice;
     }
 
-    public List<Transaccion> getTransactions() {
-        return this.transactions;
+    public Transaccion getTransactions() {
+        return this.transaccion;
     }
 
-    public void setTransactions(List<Transaccion> transactions) {
-        this.transactions = transactions;
+    public void setTransactions(Transaccion transactions) {
+        this.transaccion = transactions;
     }
 
     public Date getCreatedAt() {
@@ -112,6 +91,4 @@ public class Empleado {
         this.updateAt = updateAt;
     }
 
-      
-    
 }
