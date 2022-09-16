@@ -23,22 +23,17 @@ public class Empleado {
     @JoinColumn(name = "idempresa", referencedColumnName = "id")
     private Empresa empresa;
 
-    @ManyToOne
-    @JoinColumn(name = "idtransaccion", referencedColumnName = "id")
-    private Transaccion transaccion;
-
     @Column(name = "createdAt")
     private Date createdAt;
 
     @Column(name = "updatedAt")
     private Date updateAt;
 
-    public Empleado(Long id, String email, Empresa enterprice, Transaccion transactions, Date createdAt,
+    public Empleado(Long id, String email, Empresa enterprice, Date createdAt,
             Date updateAt) {
         this.id = id;
         this.email = email;
         this.empresa = enterprice;
-        this.transaccion = transactions;
         this.createdAt = createdAt;
         this.updateAt = updateAt;
     }
@@ -65,14 +60,6 @@ public class Empleado {
 
     public void setEnterprice(Empresa enterprice) {
         this.empresa = enterprice;
-    }
-
-    public Transaccion getTransactions() {
-        return this.transaccion;
-    }
-
-    public void setTransactions(Transaccion transactions) {
-        this.transaccion = transactions;
     }
 
     public Date getCreatedAt() {
