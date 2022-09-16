@@ -1,9 +1,18 @@
 package com.example.proyecto3.Modelo;
 
 import java.sql.Date;
+
+
+
+import javax.persistence.*;
+
+import org.hibernate.annotations.GenericGenerator;
+
+=======
 import java.util.List;
 
 import javax.persistence.*;
+
 
 @Entity
 @Table(name = "empresa")
@@ -11,6 +20,9 @@ import javax.persistence.*;
 public class Empresa {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_empresa")
+    @GenericGenerator(name = "secuencia_empresa", strategy = "increment")
+=======
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
@@ -27,11 +39,14 @@ public class Empresa {
     @Column(name = "address", length = 50)
     private String address;
 
+
+=======
     @Column(name = "users")
     private Empleado user;
 
     @Column(name = "transactions")
     private Transaccion transactions;
+
 
     @Column(name = "createdAt")
     private Date createdAt;
@@ -43,15 +58,22 @@ public class Empresa {
 
     }
 
+
+    public Empresa(Long id, String name, String document, String phone, String address, Date createdAt, Date updateAt) {
+=======
     public Empresa(Long id, String name, String document, String phone, String address, Empleado users,
             Transaccion transactions, Date createdAt, Date updateAt) {
+
         this.id = id;
         this.name = name;
         this.document = document;
         this.phone = phone;
         this.address = address;
+
+=======
         this.user = users;
         this.transactions = transactions;
+
         this.createdAt = createdAt;
         this.updateAt = updateAt;
     }
@@ -96,6 +118,8 @@ public class Empresa {
         this.address = address;
     }
 
+
+=======
     public Empleado getUser() {
         return user;
     }
@@ -111,6 +135,7 @@ public class Empresa {
     public void setTransactions(Transaccion transaccions) {
         this.transactions = transaccions;
     }
+
 
     public Date getCreateAt() {
         return createdAt;
