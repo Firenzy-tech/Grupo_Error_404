@@ -1,4 +1,4 @@
-package com.example.proyecto3.modelo;
+package com.example.proyecto3.Modelo;
 
 import java.util.Date;
 import java.util.List;
@@ -23,9 +23,11 @@ public class Empresa {
     private String correo;
     
     @OneToMany(mappedBy = "empresa")
+    @Column(name = "empleado")
     private List<Empleado> empleado;
 
     @OneToMany(mappedBy = "empresa")
+    @Column(name = "transaccion")
     private List<Transaccion> transaccion;
 	
 	private Date updateAt;

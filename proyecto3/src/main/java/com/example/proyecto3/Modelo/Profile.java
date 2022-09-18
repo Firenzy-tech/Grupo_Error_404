@@ -1,4 +1,4 @@
-package com.example.proyecto3.modelo;
+package com.example.proyecto3.Modelo;
 
 public class Profile {
     

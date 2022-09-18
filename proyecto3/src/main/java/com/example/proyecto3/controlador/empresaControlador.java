@@ -1,4 +1,4 @@
-package com.example.proyecto3.controlador;
+package com.example.proyecto3.Controlador;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.proyecto3.modelo.Empresa;
-import com.example.proyecto3.servicios.empresaServicios;
+import com.example.proyecto3.Servicios.EmpresaServicios;
+import com.example.proyecto3.Modelo.Empresa;
 
 @RestController
 @RequestMapping ("/empresas/")
 public class empresaControlador {
 
     @Autowired
-	private empresaServicios empreServicios;
+	private EmpresaServicios empreServicios;
 
 	@PostMapping
 	private Empresa guardar(@RequestBody Empresa empresa){

@@ -1,4 +1,4 @@
-package com.example.proyecto3.servicios;
+package com.example.proyecto3.Servicios;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,15 +6,15 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.proyecto3.modelo.Transaccion;
-import com.example.proyecto3.repositorio.transaccionRepositorio;
+import com.example.proyecto3.Modelo.Transaccion;
+import com.example.proyecto3.Repositorio.TransaccionRepositorio;
 
 
 @Service
-public class transaccionServicios {
+public class TransaccionServicios {
 
     @Autowired
-    private transaccionRepositorio transRepositorio;
+    private TransaccionRepositorio transRepositorio;
 
 	public Transaccion create(Transaccion transaccion){
 		return transRepositorio.save(transaccion);

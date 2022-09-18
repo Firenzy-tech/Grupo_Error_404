@@ -1,4 +1,4 @@
-package com.example.proyecto3.controlador;
+package com.example.proyecto3.Controlador;
 
 
 import java.util.List;
@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.proyecto3.modelo.Empleado;
-import com.example.proyecto3.servicios.empleadoServicios;
+import com.example.proyecto3.Servicios.EmpleadoServicios;
+import com.example.proyecto3.Modelo.Empleado;
 
 @RestController
 @RequestMapping ("/empleados")
 public class empleadoControlador {
     
     @Autowired
-	private empleadoServicios empleaServicios;
+	private EmpleadoServicios empleaServicios;
 
 	@PostMapping
 	private Empleado guardar(@RequestBody Empleado empleado){
@@ -45,11 +45,11 @@ public class empleadoControlador {
 		return this.empleaServicios.porId(id);
 	}
 
-	public empleadoServicios getEmpleaServicios() {
+	public EmpleadoServicios getEmpleaServicios() {
 		return empleaServicios;
 	}
 
-	public void setEmpleaServicios(empleadoServicios empleaServicios) {
+	public void setEmpleaServicios(EmpleadoServicios empleaServicios) {
 		this.empleaServicios = empleaServicios;
 	}
 
