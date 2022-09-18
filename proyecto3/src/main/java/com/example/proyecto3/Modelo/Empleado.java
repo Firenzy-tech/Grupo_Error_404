@@ -1,4 +1,4 @@
-package com.example.proyecto3.modelo;
+package com.example.proyecto3.Modelo;
 
 import java.util.*;
 
@@ -15,7 +15,7 @@ public class Empleado {
     @Column(unique=true)
     private String email;
 
-     @ManyToOne
+    @ManyToOne
     @JoinColumn(name="id_empresa")
     private Empresa empresa;
     
