@@ -4,17 +4,24 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.example.proyecto3.modelo.Transaccion;
-import com.example.proyecto3.servicios.transaccionServicios;
+import com.example.proyecto3.Modelo.Transaccion;
+import com.example.proyecto3.Servicios.TransaccionServicios;
 
 @RestController
 @RequestMapping("/transacciones")
-public class transaccionControlador {
+public class TransaccionControlador {
     
     @Autowired
-	private transaccionServicios transServicios;
+	private TransaccionServicios transServicios;
 
 	@PostMapping
 	private Transaccion guardar(@RequestBody Transaccion transaccion){
