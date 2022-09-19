@@ -18,7 +18,7 @@ import com.example.proyecto3.Modelo.Transaccion;
 
 @RestController
 @RequestMapping("/transacciones")
-public class transaccionControlador {
+public class TransaccionControlador {
     
     @Autowired
 	private TransaccionServicios transServicios;

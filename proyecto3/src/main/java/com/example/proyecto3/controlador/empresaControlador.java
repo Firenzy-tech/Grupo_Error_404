@@ -17,7 +17,7 @@ import com.example.proyecto3.Modelo.Empresa;
 
 @RestController
 @RequestMapping ("/empresas/")
-public class empresaControlador {
+public class EmpresaControlador {
 
     @Autowired
 	private EmpresaServicios empreServicios;
