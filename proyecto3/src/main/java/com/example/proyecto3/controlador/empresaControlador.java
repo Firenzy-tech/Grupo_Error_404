@@ -16,7 +16,7 @@ import com.example.proyecto3.Servicios.EmpresaServicios;
 import com.example.proyecto3.Modelo.Empresa;
 
 @RestController
-@RequestMapping ("/empresas/")
+@RequestMapping ("/empresas")
 public class EmpresaControlador {
 
     @Autowired

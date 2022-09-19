@@ -23,11 +23,11 @@ public class Empresa {
     private String correo;
     
     @OneToMany(mappedBy = "empresa")
-    @Column(name = "empleado")
+    //@JoinColumn(name = "empleado")
     private List<Empleado> empleado;
 
     @OneToMany(mappedBy = "empresa")
-    @Column(name = "transaccion")
+    //@JoinColumn(name = "transaccion")
     private List<Transaccion> transaccion;
 	
 	private Date updateAt;

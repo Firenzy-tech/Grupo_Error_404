@@ -4,6 +4,8 @@ import java.util.*;
 
 import javax.persistence.*;
 
+import com.example.proyecto3.Enum.Enum_roleName;
+
 @Entity
 @Table (name = "empleado")
 public class Empleado {
@@ -15,13 +17,18 @@ public class Empleado {
     @Column(unique=true)
     private String email;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="id_empresa")
     private Empresa empresa;
     
 
     @OneToMany(mappedBy = "empleado")
     private List<Transaccion> transaccion;
+
+    private Enum_roleName rol;
+
+    @OneToOne
+    private Perfil perfil;
 	
     private Date updateAt;
 	private Date createdAt;
@@ -29,11 +36,13 @@ public class Empleado {
     public Empleado(){}
 
     public Empleado(Long id, String email, Empresa empresa,
-            List<Transaccion> transaccion, Date updateAt, Date createdAt) {
+            List<Transaccion> transaccion, Enum_roleName rol, Perfil perfil, Date updateAt, Date createdAt) {
       
         this.email = email;
         this.empresa = empresa;
         this.transaccion = transaccion;
+        this.rol = rol;
+        this.perfil = perfil;
         this.updateAt = updateAt;
         this.createdAt = createdAt;
     }
@@ -84,6 +93,22 @@ public class Empleado {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Enum_roleName getRol() {
+        return rol;
+    }
+
+    public void setRol(Enum_roleName rol) {
+        this.rol = rol;
+    }
+
+    public Perfil getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
     }
 
    
