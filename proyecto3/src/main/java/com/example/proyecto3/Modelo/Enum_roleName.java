@@ -1,14 +1,11 @@
 package com.example.proyecto3.Modelo;
 
-public class Enum_roleName {
-
-
-    public enum TipoPersona {
-        ADMON,
-        VENTAS,
-        VETERINARIO,
-        PELUQUERO
-
-    }
+public enum Enum_roleName {
+    
+    ADMIN,
+    VENTAS,
+    VETERINARIO,
+    PELUQUERO
+ 
     
 }
