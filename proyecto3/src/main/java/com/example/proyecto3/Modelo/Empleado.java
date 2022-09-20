@@ -1,7 +1,6 @@
 package com.example.proyecto3.Modelo;
 
 import java.sql.Date;
-import java.util.List;
 
 import javax.persistence.*;
 
