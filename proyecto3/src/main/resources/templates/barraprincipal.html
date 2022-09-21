@@ -1,0 +1,11 @@
+<nav th:fragment="barraprincipal" class="navbar navbar-expand-md bg-dark navbar-dark">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button class="btn btn-info" type="button" id="barralateralColapsar" th:onclick="barraLateralColapsar();">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a class="nav-link fas fa-home fa-2x" th:href="@{/}"></a>
+            <b class="titulo" th:text="#{Diseño.Titulo}"></b>
+        </div>
+    </div>
+</nav>

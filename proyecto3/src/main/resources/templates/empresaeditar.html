@@ -1,0 +1,36 @@
+<nav id="empresaeditar" th:fragment="modulo-empresaeditar" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Agregando Empresa</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form th:action="@{/empresa/guardar}" th:object="${empresaeditada}" method="POST">
+                <div class="modal-body">
+                    <div class="form-group" style="width:100%">
+                        <label th:text="#{Diseño.Empresas.TituloCampo1}" />
+                        <input class="form-control" type="number" th:field="*{id}" name="id" id="id">
+                    </div>
+                    <div class="form-group" style="width:100%">
+                        <label th:text="#{Diseño.Empresas.TituloCampo2}" />
+                        <input class="form-control" type="text" th:field="*{nombre}" name="nombre" id="nombre">
+                    </div>
+                    <div class="form-group" style="width:100%">
+                        <label th:text="#{Diseño.Empresas.TituloCampo3}" />
+                        <select class="form-control" th:field="*{pais}" name="pais" id="pais">
+                            <option th:each="pais: ${listapaises}" th:text="${pais.pais}" th:value="${pais.id}">
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>

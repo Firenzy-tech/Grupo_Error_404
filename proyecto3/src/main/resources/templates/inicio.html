@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns="http://w3.org/1999/xthml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://w3.org/1999/xthml"
+    xmlns:sec="http://w3.org/1999/xthml">
+
+<head>
+    <title th:text="#{Diseño.Titulo}"></title>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/acciones.js}"></script>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+        type="text/css" />
+    <link rel="stylesheet" th:href="@{/css/estilos.css}" />
+</head>
+
+<body>
+    <header>
+        <div th:insert="barraprincipal :: barraprincipal"></div>
+    </header>
+    <div class="wrapper">
+        <div th:insert="menulateral :: menu-lateral"></div>
+        <div id="contenido">
+            <div th:replace="${plantilla} :: 'modulo-'+${plantilla}" />
+        </div>
+    </div>
+    <footer>
+
+    </footer>
+</body>
+
+</html>
