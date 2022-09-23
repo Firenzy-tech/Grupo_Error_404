@@ -19,24 +19,39 @@
                 <table class="table table-striped table-dark">
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col">Id</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Documento</th>
                             <th scope="col">Telefono</th>
                             <th scope="col">Dirección</th>
-                            <th scope="col">Transacción</th>
-                            <th scope="col">Creada</th>
-                            <th scope="col">Actualizada</th>
+                            <th scope="col">Acciones</th>
+
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            
+                        <tr th:each="empresas : ${listaEmpresa}">
+                            <td scope="row" th:text="${empresas.id}">Id</td>
+                            <td scope="row" th:text="${empresas.name}">Nombre</td>
+                            <td scope="row" th:text="${empresas.document}">Documento</td>
+                            <td scope="row" th:text="${empresas.phone}">Telefono</td>
+                            <td scope="row" th:text="${empresas.address}">Direccion</td>
+                            <td scope="row">
+                               
+                                <div>
+                                    <a th:href="@{/entidad/editar/{id}(id=${empresas.id})}" class="btn btn-info"
+                                    type="button">Editar</a>
+                                    <a th:href="@{/entidad/{id}(id=${empresas.id})}" class="btn btn-danger"
+                                    type="button">Eliminar</a>
+                                </div>
+                                    
+                            </td>
                         </tr>
                     </tbody>
                 </table>
                 <div>
                     <a class="button-85" type="button" href="/">Regresar</a>
+                    <br></br>
+                    <a class="button-85" type="button" href="/entidad/agregar">Agregar Registro</a>
                 </div>
             </div>
         </div>

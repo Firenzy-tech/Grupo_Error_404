@@ -17,7 +17,7 @@ public class Empresa {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name", length = 100, unique = true)
+    @Column(name = "name", length = 100)
     private String name;
 
     @Column(name = "document", length = 20, unique = true)
@@ -29,10 +29,10 @@ public class Empresa {
     @Column(name = "address", length = 50)
     private String address;
 
-    @Column(name = "createdAt")
+    @Column(name = "createdAt", nullable = true)
     private Date createdAt;
 
-    @Column(name = "updatedAt")
+    @Column(name = "updatedAt", nullable = true)
     private Date updateAt;
 
     public Empresa() {
@@ -48,7 +48,14 @@ public class Empresa {
         this.createdAt = createdAt;
         this.updateAt = updateAt;
     }
-
+    public Empresa(String name, String document, String phone, String address, Date createdAt, Date updateAt) {
+        this.name = name;
+        this.document = document;
+        this.phone = phone;
+        this.address = address;
+        this.createdAt = createdAt;
+        this.updateAt = updateAt;
+    }
     public Long getId() {
         return this.id;
     }

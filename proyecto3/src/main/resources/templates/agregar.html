@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://w3.org/1999/xthml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://w3.org/1999/xthml"
+    xmlns:sec="http://w3.org/1999/xthml">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Proyecto Error 404</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="/styles.css" rel="stylessheet" />
+</head>
+
+<body>
+    <main>
+        <div class="px-4 py-5 my-5 text-center">
+            <h1 class="display-5 fw-bold mb-4">Empresas</h1>
+            <div class="d-flex gap-4 justify-content-center">
+                <div class="card-body">
+                    <form th:action="@{/entidad}" th:object="${nuevaEmpresa}" method="POST">
+                        <div class="form-group">
+                            <label>
+                                Id:
+                            </label>
+                            <input type="text" name="id" th:field="*{id}" class="form-control"
+                                placeholder="Digite el ID" required>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Nombre:
+                            </label>
+                            <input type="text" name="name" th:field="*{name}" class="form-control"
+                                placeholder="Digite el nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Documento:
+                            </label>
+                            <input type="text" name="document" th:field="*{document}" class="form-control"
+                                placeholder="Digite el documento" required>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Telefono:
+                            </label>
+                            <input type="text" name="phone" th:field="*{phone}" class="form-control"
+                                placeholder="Digite el telefono" required>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Direccion:
+                            </label>
+                            <input type="text" name="address" th:field="*{address}" class="form-control"
+                                placeholder="Digite la direccion" required>
+                        </div>
+                        <div class="box-footer">
+                            <button class="button-85">Guardar</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
