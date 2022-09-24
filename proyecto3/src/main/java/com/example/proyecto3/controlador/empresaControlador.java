@@ -28,7 +28,7 @@ public class EmpresaControlador {
 
 	}
 
-	@GetMapping("/empresas")
+	@GetMapping(value = "/lista_empresas")
 	public List<Empresa> listarTodosLasEmpresas (){
 		return this.empreServicios.getAllEmpresa();
 	}

@@ -17,7 +17,7 @@ import com.example.proyecto3.Servicios.TransaccionServicios;
 import com.example.proyecto3.Modelo.Transaccion;
 
 @RestController
-@RequestMapping("/transacciones")
+@RequestMapping("/movimientos")
 public class TransaccionControlador {
     
     @Autowired
@@ -29,7 +29,7 @@ public class TransaccionControlador {
 
 	}
 
-	@GetMapping("/Listas_transacciones")
+	@GetMapping(value = "/empresas")
 	public List<Transaccion> listarTodosLasTransacciones (){
 		return this.transServicios.getAllTransacciones();
 	}

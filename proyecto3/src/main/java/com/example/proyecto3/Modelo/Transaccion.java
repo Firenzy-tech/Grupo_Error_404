@@ -4,11 +4,8 @@ import java.util.Date;
 
 import javax.persistence.*;
 
-
 @Entity
-@Table(name = "Transaccion")
-
-
+@Table(name = "transaccion")
 public class Transaccion {
 
     @Id
@@ -18,10 +15,12 @@ public class Transaccion {
     private String concept;
     private float amount;
 
+    
     @ManyToOne
     @JoinColumn(name="idEmpleado")
     private Empleado empleado;
 
+    
     @ManyToOne
     @JoinColumn(name = "idEmpresa")
     private Empresa empresa;

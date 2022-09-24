@@ -17,7 +17,7 @@ import com.example.proyecto3.Servicios.EmpleadoServicios;
 import com.example.proyecto3.Modelo.Empleado;
 
 @RestController
-@RequestMapping ("/empleados")
+@RequestMapping ("/usuarios")
 public class EmpleadoControlador {
     
     @Autowired
@@ -29,7 +29,7 @@ public class EmpleadoControlador {
 
 	}
 
-	@GetMapping("/empleados")
+	@GetMapping (value = "/lista_usuarios")
 	public List<Empleado> listarTodosLosEmpleados (){
 		return this.empleaServicios.getAllEmpleados();
 	}
@@ -40,7 +40,7 @@ public class EmpleadoControlador {
 		
 	}
 
-	@GetMapping(value = "{id}")
+	@GetMapping(value = "usuario/{id}")
 	public Optional<Empleado> listaPorId (@PathVariable ("id") Long id){
 		return this.empleaServicios.porId(id);
 	}
