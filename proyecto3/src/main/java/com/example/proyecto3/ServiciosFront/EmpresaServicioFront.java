@@ -32,5 +32,6 @@ public class EmpresaServicioFront {
     public void eliminarEmpresa(Long id){
         repositorio.deleteById(id);
     }
+    
 
 }
