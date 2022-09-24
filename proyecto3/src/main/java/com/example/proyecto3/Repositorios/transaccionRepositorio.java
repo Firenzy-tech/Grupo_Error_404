@@ -5,4 +5,4 @@ import org.springframework.stereotype.Service;
 import com.example.proyecto3.Modelo.Transaccion;
 
 @Service
-public interface TransaccionRepositorio extends JpaRepository <Transaccion, long> {}
+public interface TransaccionRepositorio extends JpaRepository <Transaccion, Long> {}
