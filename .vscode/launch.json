@@ -7,13 +7,13 @@
             "type": "chrome",
             "webRoot": "${workspaceFolder}"
         },
-        {
-            "name": "Launch Chrome",
-            "request": "launch",
-            "type": "chrome",
-            "url": "http://localhost:8080",
-            "webRoot": "${workspaceFolder}"
-        },
+    {
+        "name": "Launch Chrome",
+        "request": "launch",
+        "type": "chrome",
+        "url": "http://localhost:8090",
+        "webRoot": "${workspaceFolder}"
+    },
         {
             "type": "java",
             "name": "Spring Boot-Proyecto3Application<proyecto3>",
