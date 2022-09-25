@@ -1,6 +1,6 @@
 <!doctype html>
-<html xmlns="http://w3.org/1999/xthml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://w3.org/1999/xthml"
-    xmlns:sec="http://w3.org/1999/xthml">
+<html xmlns="http://w3.org/1999/xthml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:layout="http://w3.org/1999/xthml">
 
 <head>
     <meta charset="utf-8">
@@ -14,13 +14,17 @@
 <body>
     <main>
         <div class="px-4 py-5 my-5 text-center">
-            <img src="Image/error-404.png" class="d-block mx-auto mb-4" height="150px" alt="Proyecto"/>
+            <img src="Image/error-404.png" class="d-block mx-auto mb-4" height="150px" alt="Proyecto" />
             <div class="col-lg-6 mx-auto">
                 <h1 class="display-5 fw-bold">Proyecto Error 404</h1>
                 <p class="lead mb-4">Acá se coloca una descripción del proyecto</p>
-                <a href= "/entidad" class="button-85" type="button">Ver Empresas</a>
-                <a class="button-85" type="button">Agregar transacción</a>
-                
+                <div sec:authorize="!isAuthenticated()">
+                    <a th:href="@{/oauth2/authorization/auth0}" class="button-85">Ingreso</a>
+                </div>
+                <br />
+                <div sec:authorize="isAuthenticated()">
+                    <a href= "/entidad" class="button-85" type="button">Ver Empresas</a>
+                </div>
             </div>
         </div>
     </main>

@@ -4,7 +4,7 @@ import java.sql.Date;
 
 import javax.persistence.*;
 
-import org.hibernate.annotations.GenericGenerator;
+
 
 @Entity
 @Table(name = "Transaccion")
@@ -12,9 +12,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class Transaccion {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_transaccion")
-    @GenericGenerator(name = "secuencia_transaccion", strategy = "increment")
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column(name = "concept", length = 100)
