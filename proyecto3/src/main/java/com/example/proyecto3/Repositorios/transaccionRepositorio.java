@@ -6,3 +6,5 @@ import com.example.proyecto3.Modelo.Transaccion;
 
 @Service
 public interface TransaccionRepositorio extends JpaRepository <Transaccion, Long> {}
+   
+
