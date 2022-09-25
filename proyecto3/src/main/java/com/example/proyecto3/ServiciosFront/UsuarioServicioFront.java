@@ -39,7 +39,7 @@ public class UsuarioServicioFront {
             Usuarios nuevoUsuario = new Usuarios(email, image, auth0Id, name);
             return crearUsuario(nuevoUsuario);
         }
-
+        
         return usuario;
 
     }

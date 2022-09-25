@@ -34,8 +34,9 @@ public class ControladorFront {
         if (principal != null) {
 
             Usuarios usuario = this.usuarioServicio.getUsuario(principal.getClaims());
+            model.addAttribute("usuario", usuario);
         }
-        
+
 
         return "index";
     }

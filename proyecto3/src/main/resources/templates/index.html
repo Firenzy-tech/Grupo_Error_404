@@ -23,6 +23,8 @@
                 </div>
                 <br />
                 <div sec:authorize="isAuthenticated()">
+                    <h1 th:text="'Bienvenido, ' + ${usuario.getName()}"></h1>
+                    <br />
                     <a href= "/entidad" class="button-85" type="button">Ver Empresas</a>
                 </div>
             </div>
